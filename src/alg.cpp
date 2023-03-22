@@ -10,7 +10,6 @@ count++;
 }
 return count;
 }
-
 int countPairs2(int *arr, int len, int value) {
 int count2 = 0;
 for (int i = 0; i < len - 1; i++) {
@@ -22,7 +21,6 @@ count2++;
 }
 return count2;
 }
-
 int countPairs3(int *arr, int len, int value) {
 int count3 = 0;
 for (int i = 0; i < len - 1; i++) {
