@@ -13,44 +13,42 @@ return count;
 
 int countPairs2(int *arr, int len, int value) {
 int count2 = 0;
-int firstIndex2 = 0;
-int lastIndex2 = len-1;
-while (firstIndex2 < lastIndex2) {
-if (arr[lastIndex2] + arr[firstIndex2] == value) {
+for (int i = 0; i < len - 1; i++) {
+for (int j = len - 1; j > i; j--) {
+if (arr[i] + arr[j] == value) {
 count2++;
-lastIndex2--;
-} else {
-if (arr[lastIndex2] + arr[firstIndex2] < value) {
-firstIndex2++;
-} else {
-lastIndex2--;
 }
 }
 }
 return count2;
 }
 
-int binSearch(int *arr, int secondArg, int len) {
-int low, high, middle;
-low = 0;
-high = len - 1;
-while (low <= high) {
-middle = (low + high) / 2;
-if (secondArg < arr[middle]) {
-high = middle - 1;
-} else if (secondArg > arr[middle]) {
-low = middle + 1;
-} else {
-return arr[middle];
-}
-}
-return 0;
-}
 int countPairs3(int *arr, int len, int value) {
 int count3 = 0;
-for (int i = 0; i < len; i++) {
-if (arr[i] + binSearch(arr+i, value-arr[i], len-i) == value) {
+for (int i = 0; i < len - 1; i++) {
+int lastIndex = len;
+int firstIndex = i;
+while (firstIndex < lastIndex - 1) {
+int middle = (firstIndex + lastIndex) / 2;
+if (arr[i] + arr[middle] == value) {
 count3++;
+int middle3 = middle + 1;
+while (arr[i] + arr[middle3] == value && middle3 < lastIndex) {
+count3++;
+middle3++;
+}
+middle3 = middle - 1;
+while (arr[i] + arr[middle3] == value && middle3 > firstIndex) {
+count3++;
+middle3--;
+}
+break;
+}
+if (arr[i] + arr[middle] > value) {
+lastIndex = middle;
+} else {
+firstIndex = middle;
+}
 }
 }
 return count3;
