@@ -30,7 +30,7 @@ lastIndex2--;
 return count2;
 }
 
-int binSearch(int *arr,int secondArg,int len) {
+int binSearch(int *arr, int secondArg, int len) {
 int low, high, middle;
 low = 0;
 high = len - 1;
@@ -49,9 +49,9 @@ return 0;
 int countPairs3(int *arr, int len, int value) {
 int count3 = 0;
 for (int i = 0; i < len; i++) {
-if (arr[i] + binSearch(arr+i,value-arr[i],len-i) == value) {
+if (arr[i] + binSearch(arr+i, value-arr[i], len-i) == value) {
 count3++;
 }
 }
-return count3;  
+return count3;
 }
